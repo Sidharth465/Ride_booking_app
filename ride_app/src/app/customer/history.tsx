@@ -13,7 +13,12 @@ import { Ionicons } from "@expo/vector-icons";
 import CustomText from "@/components/shared/CustomText";
 import { getMyRides } from "@/service/rideService";
 import { Colors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { VEHICLE_LABELS, VehicleType } from "@/types/ride";
 
 type HistoryRide = {
@@ -71,12 +76,12 @@ const RideHistory = () => {
     <SafeAreaView style={styles.root} edges={["top"]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} hitSlop={12}>
-          <Ionicons name="arrow-back" size={22} color={Colors.text} />
+          <Ionicons name="arrow-back" size={RFValue(22)} color={Colors.text} />
         </TouchableOpacity>
         <CustomText fontFamily="Bold" style={styles.title}>
           Ride history
         </CustomText>
-        <View style={{ width: 22 }} />
+        <View style={{ width: scaleHorizontal(22) }} />
       </View>
 
       {loading ? (
@@ -159,8 +164,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: scaleHorizontal(16),
+    paddingVertical: scaleVertical(12),
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.border,
     backgroundColor: Colors.surface,
@@ -170,27 +175,31 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 24,
+    padding: scaleModerate(24),
   },
-  list: { padding: 16, paddingBottom: 40 },
+  list: {
+    paddingHorizontal: scaleHorizontal(16),
+    paddingTop: scaleVertical(16),
+    paddingBottom: scaleVertical(40),
+  },
   card: {
     borderWidth: 1,
     borderColor: Colors.border,
-    borderRadius: 14,
-    padding: 14,
-    marginBottom: 12,
+    borderRadius: scaleModerate(14),
+    padding: scaleModerate(14),
+    marginBottom: scaleVertical(12),
     backgroundColor: Colors.surface,
   },
   cardTop: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 6,
+    marginBottom: scaleVertical(6),
   },
-  addr: { color: Colors.muted, marginBottom: 2 },
+  addr: { color: Colors.muted, marginBottom: scaleVertical(2) },
   meta: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
-    marginTop: 8,
+    gap: scaleHorizontal(4),
+    marginTop: scaleVertical(8),
   },
 });

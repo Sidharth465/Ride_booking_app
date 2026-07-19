@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import CustomText from "./CustomText";
 import { callPhone } from "@/utils/phone";
 import { useColors } from "@/theme/ThemeProvider";
+import { RFValue, scaleHorizontal, scaleModerate, scaleVertical } from "@/utils/responsive";
 
 type ContactActionsProps = {
   phone?: string | null;
@@ -29,10 +30,10 @@ const ContactActions: FC<ContactActionsProps> = ({
         onPress={() => callPhone(phone)}
         activeOpacity={0.85}
       >
-        <Ionicons name="call" size={18} color={colors.onPrimary} />
+        <Ionicons name="call" size={RFValue(18)} color={colors.onPrimary} />
         <CustomText
           fontFamily="Medium"
-          style={{ color: colors.onPrimary, fontSize: 13 }}
+          style={{ color: colors.onPrimary, fontSize: RFValue(13) }}
         >
           Call {peerLabel}
         </CustomText>
@@ -45,12 +46,12 @@ const ContactActions: FC<ContactActionsProps> = ({
       >
         <Ionicons
           name="chatbubble-ellipses"
-          size={18}
+          size={RFValue(18)}
           color={colors.onPrimary}
         />
         <CustomText
           fontFamily="Medium"
-          style={{ color: colors.onPrimary, fontSize: 13 }}
+          style={{ color: colors.onPrimary, fontSize: RFValue(13) }}
         >
           Chat
         </CustomText>
@@ -64,16 +65,16 @@ export default ContactActions;
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
-    gap: 10,
-    marginBottom: 12,
+    gap: scaleHorizontal(10),
+    marginBottom: scaleVertical(12),
   },
   btn: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 6,
-    paddingVertical: 12,
-    borderRadius: 12,
+    gap: scaleHorizontal(6),
+    paddingVertical: scaleVertical(12),
+    borderRadius: scaleModerate(12),
   },
 });

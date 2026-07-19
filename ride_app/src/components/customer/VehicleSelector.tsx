@@ -11,7 +11,7 @@ import { VehicleType, VEHICLE_LABELS } from "@/types/ride";
 import { vehicleIcons } from "@/utils/mapUtils";
 import { rideStyles } from "@/styles/rideStyles";
 import { Colors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue, scaleHorizontal, scaleVertical } from "@/utils/responsive";
 
 type FareMap = Record<VehicleType, number>;
 
@@ -41,7 +41,7 @@ const VehicleSelector: FC<VehicleSelectorProps> = ({
 
       <ScrollView
         style={styles.list}
-        contentContainerStyle={{ paddingBottom: 8 }}
+        contentContainerStyle={{ paddingBottom: scaleVertical(8) }}
         showsVerticalScrollIndicator={false}
       >
         {VEHICLES.map((vehicle) => {
@@ -106,11 +106,11 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: scaleHorizontal(10),
   },
   optionRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    gap: scaleHorizontal(12),
   },
 });

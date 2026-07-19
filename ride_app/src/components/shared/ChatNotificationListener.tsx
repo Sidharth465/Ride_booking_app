@@ -15,7 +15,12 @@ import { useWS } from "@/service/WSProvider";
 import { tokenStorage } from "@/store/storage";
 import { useColors } from "@/theme/ThemeProvider";
 import { getSession } from "@/service/session";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
 type ChatPayload = {
   rideId?: string;
@@ -122,13 +127,13 @@ const ChatNotificationListener = () => {
       style={[
         styles.wrap,
         {
-          top: insets.top + 8,
+          top: insets.top + scaleVertical(8),
           opacity,
           transform: [
             {
               translateY: opacity.interpolate({
                 inputRange: [0, 1],
-                outputRange: [-12, 0],
+                outputRange: [-scaleVertical(12), 0],
               }),
             },
           ],
@@ -151,7 +156,7 @@ const ChatNotificationListener = () => {
         >
           <Ionicons
             name="chatbubble-ellipses"
-            size={16}
+            size={RFValue(16)}
             color={colors.onPrimary}
           />
         </View>
@@ -166,12 +171,12 @@ const ChatNotificationListener = () => {
           <CustomText
             fontSize={11}
             numberOfLines={2}
-            style={{ color: colors.muted, marginTop: 2 }}
+            style={{ color: colors.muted, marginTop: scaleVertical(2) }}
           >
             {banner.text}
           </CustomText>
         </View>
-        <Ionicons name="chevron-forward" size={18} color={colors.muted} />
+        <Ionicons name="chevron-forward" size={RFValue(18)} color={colors.muted} />
       </TouchableOpacity>
     </Animated.View>
   );
@@ -182,18 +187,18 @@ export default ChatNotificationListener;
 const styles = StyleSheet.create({
   wrap: {
     position: "absolute",
-    left: 12,
-    right: 12,
+    left: scaleHorizontal(12),
+    right: scaleHorizontal(12),
     zIndex: 9999,
     elevation: 30,
   },
   banner: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
-    borderRadius: 14,
+    gap: scaleHorizontal(10),
+    paddingHorizontal: scaleHorizontal(12),
+    paddingVertical: scaleVertical(12),
+    borderRadius: scaleModerate(14),
     borderWidth: 1.5,
     shadowColor: "#000",
     shadowOpacity: 0.2,
@@ -202,9 +207,9 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   iconWrap: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: scaleModerate(32),
+    height: scaleModerate(32),
+    borderRadius: scaleModerate(16),
     alignItems: "center",
     justifyContent: "center",
   },

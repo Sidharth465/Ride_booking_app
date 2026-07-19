@@ -15,7 +15,12 @@ import { vehicleIcons } from "@/utils/mapUtils";
 import { openGoogleMapsDirections } from "@/utils/openMaps";
 import { VehicleType, VEHICLE_LABELS } from "@/types/ride";
 import { Colors, MapColors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
 export type RideOffer = {
   _id: string;
@@ -122,11 +127,11 @@ const RideOfferModal: FC<RideOfferModalProps> = ({
             onPress={openMaps}
             activeOpacity={0.85}
           >
-            <Ionicons name="map-outline" size={18} color={MapColors.path} />
+            <Ionicons name="map-outline" size={RFValue(18)} color={MapColors.path} />
             <CustomText
               fontFamily="Medium"
               fontSize={12}
-              style={{ color: MapColors.path, marginLeft: 8 }}
+              style={{ color: MapColors.path, marginLeft: scaleHorizontal(8) }}
             >
               Open in Google Maps
             </CustomText>
@@ -165,13 +170,13 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
-    marginBottom: 12,
+    gap: scaleHorizontal(12),
+    marginBottom: scaleVertical(12),
   },
   iconWrap: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
+    width: scaleModerate(48),
+    height: scaleModerate(48),
+    borderRadius: scaleModerate(14),
     backgroundColor: Colors.secondary,
     alignItems: "center",
     justifyContent: "center",
@@ -179,55 +184,63 @@ const styles = StyleSheet.create({
   title: { fontSize: RFValue(15), color: Colors.text },
   farePill: {
     backgroundColor: "rgba(255, 90, 79, 0.12)",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 12,
+    paddingHorizontal: scaleHorizontal(12),
+    paddingVertical: scaleVertical(8),
+    borderRadius: scaleModerate(12),
   },
   fare: { fontSize: RFValue(15), color: Colors.primary },
   mapWrap: {
-    height: 160,
-    borderRadius: 14,
+    height: scaleVertical(160),
+    borderRadius: scaleModerate(14),
     overflow: "hidden",
-    marginBottom: 12,
+    marginBottom: scaleVertical(12),
     backgroundColor: Colors.secondary_light,
   },
   routeCard: {
     backgroundColor: Colors.secondary_light,
-    borderRadius: 14,
-    padding: 14,
+    borderRadius: scaleModerate(14),
+    padding: scaleModerate(14),
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colors.border,
   },
-  routeRow: { flexDirection: "row", alignItems: "flex-start", gap: 10 },
-  routeLabel: { color: Colors.muted, marginBottom: 2, letterSpacing: 0.4 },
+  routeRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: scaleHorizontal(10),
+  },
+  routeLabel: {
+    color: Colors.muted,
+    marginBottom: scaleVertical(2),
+    letterSpacing: 0.4,
+  },
   pickupDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: scaleModerate(10),
+    height: scaleModerate(10),
+    borderRadius: scaleModerate(5),
     backgroundColor: MapColors.pickup,
-    marginTop: 4,
+    marginTop: scaleVertical(4),
   },
   dropDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: scaleModerate(10),
+    height: scaleModerate(10),
+    borderRadius: scaleModerate(5),
     backgroundColor: MapColors.drop,
-    marginTop: 4,
+    marginTop: scaleVertical(4),
   },
   routeLine: {
-    width: 2,
-    height: 14,
+    width: scaleHorizontal(2),
+    height: scaleVertical(14),
     backgroundColor: Colors.border,
-    marginLeft: 4,
-    marginVertical: 4,
+    marginLeft: scaleHorizontal(4),
+    marginVertical: scaleVertical(4),
   },
   mapsBtn: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 12,
-    paddingVertical: 12,
-    borderRadius: 12,
+    marginTop: scaleVertical(12),
+    paddingVertical: scaleVertical(12),
+    borderRadius: scaleModerate(12),
     borderWidth: 1.5,
     borderColor: MapColors.path,
     backgroundColor: "rgba(0, 122, 255, 0.08)",
@@ -235,14 +248,14 @@ const styles = StyleSheet.create({
   actions: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    marginTop: 14,
-    marginBottom: 8,
+    gap: scaleHorizontal(10),
+    marginTop: scaleVertical(14),
+    marginBottom: scaleVertical(8),
   },
   ignoreBtn: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 12,
+    paddingVertical: scaleVertical(12),
+    paddingHorizontal: scaleHorizontal(16),
+    borderRadius: scaleModerate(12),
     backgroundColor: "rgba(220, 38, 38, 0.08)",
   },
 });

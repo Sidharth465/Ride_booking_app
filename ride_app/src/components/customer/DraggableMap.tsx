@@ -27,7 +27,7 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import haversine from "haversine-distance";
 import { mapStyles } from "@/styles/mapStyles";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "@/utils/responsive";
 import { Colors } from "@/utils/Constants";
 
 const MAX_DISTANCE_THRESHOLD = 10000;

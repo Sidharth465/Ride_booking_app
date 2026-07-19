@@ -1,5 +1,6 @@
 import { AppColors, Colors } from "@/utils/Constants";
 import { StyleSheet } from "react-native";
+import { scaleHorizontal, scaleVertical } from "@/utils/responsive";
 
 export const createCommonStyles = (c: AppColors = Colors) =>
   StyleSheet.create({
@@ -21,7 +22,7 @@ export const createCommonStyles = (c: AppColors = Colors) =>
     flexRowGap: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 15,
+      gap: scaleHorizontal(15),
     },
     flexRow: {
       flexDirection: "row",
@@ -33,7 +34,7 @@ export const createCommonStyles = (c: AppColors = Colors) =>
     },
     lightText: {
       opacity: 0.7,
-      marginTop: 2,
+      marginTop: scaleVertical(2),
     },
   });
 

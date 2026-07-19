@@ -1,5 +1,10 @@
 import { AppColors, Colors } from "@/utils/Constants";
 import { StyleSheet } from "react-native";
+import {
+  RFValue,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
 export const createRoleStyles = (c: AppColors = Colors) =>
   StyleSheet.create({
@@ -10,40 +15,40 @@ export const createRoleStyles = (c: AppColors = Colors) =>
     },
     logo: {
       resizeMode: "contain",
-      height: 60,
-      marginTop: 120,
-      marginBottom: 40,
+      height: scaleVertical(60),
+      marginTop: scaleVertical(120),
+      marginBottom: scaleVertical(40),
     },
     card: {
       width: "90%",
-      marginTop: 40,
-      borderRadius: 18,
+      marginTop: scaleVertical(40),
+      borderRadius: scaleModerate(18),
       borderWidth: 1,
       borderColor: c.border,
       backgroundColor: c.surface,
-      marginVertical: 10,
+      marginVertical: scaleVertical(10),
       alignItems: "center",
       overflow: "hidden",
     },
     cardContent: {
       width: "100%",
-      padding: 14,
+      padding: scaleModerate(14),
     },
     title: {
-      fontSize: 18,
+      fontSize: RFValue(18),
       fontWeight: "bold",
       color: c.text,
     },
     image: {
-      height: 120,
-      borderTopLeftRadius: 18,
-      borderTopRightRadius: 18,
+      height: scaleVertical(120),
+      borderTopLeftRadius: scaleModerate(18),
+      borderTopRightRadius: scaleModerate(18),
       width: "100%",
     },
     description: {
-      fontSize: 14,
+      fontSize: RFValue(14),
       color: c.muted,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
   });
 

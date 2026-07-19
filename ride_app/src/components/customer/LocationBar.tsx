@@ -6,7 +6,7 @@ import { hasBlockingActiveRide } from "@/utils/rideActive";
 import { router } from "expo-router";
 import React from "react";
 import { View, TouchableOpacity, Alert, StyleSheet } from "react-native";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue, scaleHorizontal, scaleModerate, scaleVertical } from "@/utils/responsive";
 import CustomText from "../shared/CustomText";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -82,19 +82,19 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    gap: 10,
+    paddingHorizontal: scaleHorizontal(12),
+    paddingVertical: scaleVertical(8),
+    gap: scaleHorizontal(10),
     width: "100%",
   },
   locationBar: {
     flex: 1,
     minWidth: 0,
-    borderRadius: 12,
-    height: 40,
+    borderRadius: scaleModerate(12),
+    height: scaleVertical(40),
     alignItems: "center",
     flexDirection: "row",
-    paddingRight: 12,
+    paddingRight: scaleHorizontal(12),
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.15,
     shadowRadius: 4,

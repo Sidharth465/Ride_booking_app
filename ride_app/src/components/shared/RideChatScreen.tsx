@@ -17,7 +17,12 @@ import { useWS } from "@/service/WSProvider";
 import { AppColors } from "@/utils/Constants";
 import { useColors } from "@/theme/ThemeProvider";
 import { useThemedStyles } from "@/theme/useThemedStyles";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
 export type ChatMessage = {
   _id?: string;
@@ -56,8 +61,8 @@ const RideChatScreen = ({
     header: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      paddingHorizontal: 16,
-      paddingVertical: 12,
+      paddingHorizontal: scaleHorizontal(16),
+      paddingVertical: scaleVertical(12),
       borderBottomWidth: 1,
       borderBottomColor: c.border,
       backgroundColor: c.surface,
@@ -68,52 +73,63 @@ const RideChatScreen = ({
       alignItems: "center" as const,
       justifyContent: "center" as const,
     },
-    list: { padding: 16, paddingBottom: 24, flexGrow: 1 },
-    empty: { textAlign: "center" as const, color: c.muted, marginTop: 40 },
-    bubbleRow: { marginBottom: 10, maxWidth: "82%" as const },
+    list: {
+      paddingHorizontal: scaleHorizontal(16),
+      paddingTop: scaleVertical(16),
+      paddingBottom: scaleVertical(24),
+      flexGrow: 1,
+    },
+    empty: {
+      textAlign: "center" as const,
+      color: c.muted,
+      marginTop: scaleVertical(40),
+    },
+    bubbleRow: { marginBottom: scaleVertical(10), maxWidth: "82%" as const },
     mineRow: { alignSelf: "flex-end" as const },
     theirsRow: { alignSelf: "flex-start" as const },
     bubble: {
-      borderRadius: 16,
-      paddingHorizontal: 12,
-      paddingVertical: 8,
+      borderRadius: scaleModerate(16),
+      paddingHorizontal: scaleHorizontal(12),
+      paddingVertical: scaleVertical(8),
     },
     mine: {
       backgroundColor: c.primary,
-      borderBottomRightRadius: 4,
+      borderBottomRightRadius: scaleModerate(4),
     },
     theirs: {
       backgroundColor: c.secondary,
-      borderBottomLeftRadius: 4,
+      borderBottomLeftRadius: scaleModerate(4),
     },
     composer: {
       flexDirection: "row" as const,
       alignItems: "flex-end" as const,
-      gap: 8,
-      paddingHorizontal: 12,
-      paddingTop: 10,
-      paddingBottom: Platform.OS === "ios" ? 10 : 12,
+      gap: scaleHorizontal(8),
+      paddingHorizontal: scaleHorizontal(12),
+      paddingTop: scaleVertical(10),
+      paddingBottom:
+        Platform.OS === "ios" ? scaleVertical(10) : scaleVertical(12),
       borderTopWidth: 1,
       borderTopColor: c.border,
       backgroundColor: c.surface,
     },
     input: {
       flex: 1,
-      maxHeight: 100,
-      minHeight: 42,
+      maxHeight: scaleVertical(100),
+      minHeight: scaleVertical(42),
       borderWidth: 1,
       borderColor: c.border,
-      borderRadius: 20,
-      paddingHorizontal: 14,
-      paddingVertical: Platform.OS === "ios" ? 10 : 8,
+      borderRadius: scaleModerate(20),
+      paddingHorizontal: scaleHorizontal(14),
+      paddingVertical:
+        Platform.OS === "ios" ? scaleVertical(10) : scaleVertical(8),
       fontSize: RFValue(12),
       color: c.text,
       backgroundColor: c.secondary_light,
     },
     sendBtn: {
-      width: 42,
-      height: 42,
-      borderRadius: 21,
+      width: scaleModerate(42),
+      height: scaleModerate(42),
+      borderRadius: scaleModerate(21),
       backgroundColor: c.primary,
       alignItems: "center" as const,
       justifyContent: "center" as const,
@@ -203,7 +219,7 @@ const RideChatScreen = ({
             fontSize={9}
             style={{
               color: mine ? "rgba(255,255,255,0.7)" : colors.muted,
-              marginTop: 4,
+              marginTop: scaleVertical(4),
               alignSelf: "flex-end",
             }}
           >
@@ -228,9 +244,9 @@ const RideChatScreen = ({
       >
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()} hitSlop={12}>
-            <Ionicons name="arrow-back" size={22} color={colors.text} />
+            <Ionicons name="arrow-back" size={RFValue(22)} color={colors.text} />
           </TouchableOpacity>
-          <View style={{ flex: 1, marginLeft: 12 }}>
+          <View style={{ flex: 1, marginLeft: scaleHorizontal(12) }}>
             <CustomText fontFamily="Bold" style={styles.title}>
               Chat with {peerLabel}
             </CustomText>
@@ -280,7 +296,7 @@ const RideChatScreen = ({
             onPress={send}
             disabled={!text.trim()}
           >
-            <Ionicons name="send" size={18} color={colors.onPrimary} />
+            <Ionicons name="send" size={RFValue(18)} color={colors.onPrimary} />
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

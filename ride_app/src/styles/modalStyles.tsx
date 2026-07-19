@@ -1,6 +1,6 @@
 import { AppColors, Colors } from "@/utils/Constants";
 import { StyleSheet } from "react-native";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue, scaleHorizontal, scaleModerate, scaleVertical } from "@/utils/responsive";
 
 export const createModalStyles = (c: AppColors = Colors) =>
   StyleSheet.create({
@@ -15,7 +15,7 @@ export const createModalStyles = (c: AppColors = Colors) =>
       shadowRadius: 4,
       shadowColor: c.text,
       elevation: 10,
-      padding: 15,
+      padding: scaleModerate(15),
     },
     addressText: {
       fontSize: RFValue(12),
@@ -23,15 +23,15 @@ export const createModalStyles = (c: AppColors = Colors) =>
     },
     button: {
       backgroundColor: c.primary,
-      borderRadius: 12,
-      padding: 14,
+      borderRadius: scaleModerate(12),
+      padding: scaleModerate(14),
       justifyContent: "center",
       alignItems: "center",
     },
     buttonContainer: {
-      paddingVertical: 10,
+      paddingVertical: scaleVertical(10),
       borderBottomWidth: 1,
-      marginVertical: 10,
+      marginVertical: scaleVertical(10),
       borderTopWidth: 1,
       borderColor: c.border,
     },
@@ -43,7 +43,7 @@ export const createModalStyles = (c: AppColors = Colors) =>
     centerText: {
       textAlign: "center",
       fontWeight: "600",
-      marginTop: 15,
+      marginTop: scaleVertical(15),
       fontSize: RFValue(13),
       textTransform: "capitalize",
       color: c.text,
@@ -52,23 +52,23 @@ export const createModalStyles = (c: AppColors = Colors) =>
       color: c.primary,
       fontSize: RFValue(13),
       position: "absolute",
-      top: -18,
+      top: scaleVertical(-18),
       zIndex: 99,
-      right: 14,
+      right: scaleHorizontal(14),
     },
     searchContainer: {
       backgroundColor: c.secondary,
       flexDirection: "row",
       alignItems: "center",
-      paddingHorizontal: 10,
-      margin: 15,
+      paddingHorizontal: scaleHorizontal(10),
+      margin: scaleModerate(15),
       justifyContent: "space-between",
-      borderRadius: 12,
+      borderRadius: scaleModerate(12),
     },
     input: {
       backgroundColor: c.secondary,
       width: "92%",
-      height: 42,
+      height: scaleVertical(42),
       color: c.text,
     },
   });

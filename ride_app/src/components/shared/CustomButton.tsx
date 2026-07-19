@@ -5,7 +5,7 @@ import {
 } from "react-native";
 import React, { FC } from "react";
 import CustomText from "./CustomText";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue, scaleModerate, scaleVertical } from "@/utils/responsive";
 import { useColors } from "@/theme/ThemeProvider";
 
 const CustomButton: FC<CustomButtonProps> = ({
@@ -49,9 +49,9 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   container: {
-    height: 48,
+    height: scaleVertical(48),
     width: "90%",
-    borderRadius: RFValue(12),
+    borderRadius: scaleModerate(12),
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",

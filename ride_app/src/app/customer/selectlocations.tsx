@@ -27,7 +27,12 @@ import VehicleSelector from "@/components/customer/VehicleSelector";
 import CustomButton from "@/components/shared/CustomButton";
 import CustomText from "@/components/shared/CustomText";
 import { Colors, MapColors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { createRide } from "@/service/rideService";
 import { hasBlockingActiveRide } from "@/utils/rideActive";
 
@@ -271,7 +276,7 @@ const SelectLocations = () => {
           <CustomText fontFamily="SemiBold" variant="h6">
             Plan your trip
           </CustomText>
-          <View style={{ width: 36 }} />
+          <View style={{ width: scaleModerate(36) }} />
         </View>
 
         <View style={styles.inputs}>
@@ -297,7 +302,7 @@ const SelectLocations = () => {
           />
           {loadingPickupGps && (
             <ActivityIndicator
-              style={{ marginBottom: 8 }}
+              style={{ marginBottom: scaleVertical(8) }}
               color={Colors.primary}
             />
           )}
@@ -325,7 +330,7 @@ const SelectLocations = () => {
               style={styles.useCurrent}
               onPress={useCurrentAsPickup}
             >
-              <Ionicons name="locate" size={16} color={MapColors.pickup} />
+              <Ionicons name="locate" size={RFValue(16)} color={MapColors.pickup} />
               <CustomText fontSize={11} style={{ color: MapColors.pickup }}>
                 Use current location
               </CustomText>
@@ -335,7 +340,7 @@ const SelectLocations = () => {
 
         {(searching || resolving) && (
           <ActivityIndicator
-            style={{ marginVertical: 8 }}
+            style={{ marginVertical: scaleVertical(8) }}
             color={Colors.primary}
           />
         )}
@@ -402,32 +407,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 12,
-    paddingBottom: 8,
+    paddingHorizontal: scaleHorizontal(12),
+    paddingBottom: scaleVertical(8),
   },
   backBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: scaleModerate(36),
+    height: scaleModerate(36),
+    borderRadius: scaleModerate(18),
     backgroundColor: Colors.secondary_light,
     alignItems: "center",
     justifyContent: "center",
   },
   inputs: {
-    paddingHorizontal: 15,
-    paddingBottom: 4,
+    paddingHorizontal: scaleHorizontal(15),
+    paddingBottom: scaleVertical(4),
   },
   useCurrent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
-    marginBottom: 8,
-    marginLeft: 4,
+    gap: scaleHorizontal(6),
+    marginBottom: scaleVertical(8),
+    marginLeft: scaleHorizontal(4),
   },
   emptyHint: {
     textAlign: "center",
     color: Colors.muted,
-    marginTop: 40,
+    marginTop: scaleVertical(40),
   },
   tripPanel: {
     flex: 1,
@@ -437,10 +442,10 @@ const styles = StyleSheet.create({
   },
   vehicleWrap: {
     flex: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: scaleModerate(20),
+    borderTopRightRadius: scaleModerate(20),
     backgroundColor: Colors.surface,
-    marginTop: -12,
+    marginTop: scaleVertical(-12),
     shadowColor: Colors.text,
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -448,8 +453,8 @@ const styles = StyleSheet.create({
   },
   confirmWrap: {
     alignItems: "center",
-    paddingVertical: 12,
-    paddingBottom: 24,
+    paddingVertical: scaleVertical(12),
+    paddingBottom: scaleVertical(24),
     borderTopWidth: 1,
     borderTopColor: "#eee",
   },

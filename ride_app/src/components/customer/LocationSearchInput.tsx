@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import { RFValue, scaleHorizontal, scaleModerate, scaleVertical } from "@/utils/responsive";
 import CustomText from "../shared/CustomText";
 
 type LocationSearchInputProps = {
@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: Colors.secondary_light,
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    marginBottom: 10,
+    borderRadius: scaleModerate(10),
+    paddingHorizontal: scaleHorizontal(12),
+    paddingVertical: scaleVertical(8),
+    marginBottom: scaleVertical(10),
     borderWidth: 1.5,
     borderColor: "transparent",
   },
@@ -76,17 +76,17 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginRight: 10,
+    width: scaleModerate(8),
+    height: scaleModerate(8),
+    borderRadius: scaleModerate(4),
+    marginRight: scaleHorizontal(10),
   },
   inputWrap: {
     flex: 1,
   },
   label: {
     color: Colors.muted,
-    marginBottom: 2,
+    marginBottom: scaleVertical(2),
   },
   input: {
     fontSize: RFValue(12),

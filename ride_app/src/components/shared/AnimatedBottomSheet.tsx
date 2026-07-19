@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/utils/Constants";
+import { scaleHorizontal, scaleModerate, scaleVertical } from "@/utils/responsive";
 
 type AnimatedBottomSheetProps = {
   visible: boolean;
@@ -102,7 +103,11 @@ const AnimatedBottomSheet: FC<AnimatedBottomSheetProps> = ({
   if (!mounted) return null;
 
   const bottomPad =
-    Math.max(insets.bottom, 12) + contentPaddingBottom + (Platform.OS === "android" ? Math.max(0, keyboardPad - 24) : 0);
+    Math.max(insets.bottom, scaleVertical(12)) +
+    contentPaddingBottom +
+    (Platform.OS === "android"
+      ? Math.max(0, keyboardPad - scaleVertical(24))
+      : 0);
 
   return (
     <Modal
@@ -126,7 +131,7 @@ const AnimatedBottomSheet: FC<AnimatedBottomSheetProps> = ({
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : undefined}
           style={styles.kav}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 8 : 0}
+          keyboardVerticalOffset={Platform.OS === "ios" ? scaleVertical(8) : 0}
         >
           <Animated.View
             style={[
@@ -172,8 +177,8 @@ const styles = StyleSheet.create({
   },
   sheet: {
     backgroundColor: Colors.surface,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    borderTopLeftRadius: scaleModerate(24),
+    borderTopRightRadius: scaleModerate(24),
     maxHeight: SCREEN_H * 0.88,
     shadowColor: Colors.text,
     shadowOpacity: 0.2,
@@ -183,17 +188,17 @@ const styles = StyleSheet.create({
   },
   handleWrap: {
     alignItems: "center",
-    paddingTop: 10,
-    paddingBottom: 4,
+    paddingTop: scaleVertical(10),
+    paddingBottom: scaleVertical(4),
   },
   handle: {
-    width: 40,
-    height: 4,
-    borderRadius: 2,
+    width: scaleHorizontal(40),
+    height: scaleVertical(4),
+    borderRadius: scaleModerate(2),
     backgroundColor: Colors.border,
   },
   scrollContent: {
-    paddingHorizontal: 18,
-    paddingTop: 4,
+    paddingHorizontal: scaleHorizontal(18),
+    paddingTop: scaleVertical(4),
   },
 });

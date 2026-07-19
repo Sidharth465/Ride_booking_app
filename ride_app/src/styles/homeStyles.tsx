@@ -1,5 +1,6 @@
 import { AppColors, Colors } from "@/utils/Constants";
 import { StyleSheet } from "react-native";
+import { scaleHorizontal } from "@/utils/responsive";
 
 export const createHomeStyles = (c: AppColors = Colors) =>
   StyleSheet.create({
@@ -10,7 +11,7 @@ export const createHomeStyles = (c: AppColors = Colors) =>
     scrollContainer: {
       flex: 1,
       backgroundColor: c.background,
-      paddingHorizontal: 10,
+      paddingHorizontal: scaleHorizontal(10),
     },
   });
 

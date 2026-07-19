@@ -12,6 +12,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { goRole } from "@/service/session";
 import { Colors } from "@/utils/Constants";
+import { RFValue, scaleHorizontal, scaleModerate } from "@/utils/responsive";
 
 const RiderAuth = () => {
   const { updateAccessToken } = useWS();
@@ -31,15 +32,15 @@ const RiderAuth = () => {
     <SafeAreaView style={authStyles.container}>
       <ScrollView contentContainerStyle={authStyles.container}>
         <View style={commonStyles.flexRowBetween}>
-          <TouchableOpacity onPress={goRole} hitSlop={12} style={{ padding: 4 }}>
-            <Ionicons name="arrow-back" size={22} color={Colors.text} />
+          <TouchableOpacity onPress={goRole} hitSlop={12} style={{ padding: scaleModerate(4) }}>
+            <Ionicons name="arrow-back" size={RFValue(22)} color={Colors.text} />
           </TouchableOpacity>
           <Image
             style={authStyles.logo}
             source={require("@/assets/images/rider_logo.png")}
           />
           <TouchableOpacity style={authStyles.flexRowGap}>
-            <Entypo name="help-with-circle" size={18} color="grey" />
+            <Entypo name="help-with-circle" size={RFValue(18)} color="grey" />
             <CustomText fontFamily="Medium" variant="h7">
               Help
             </CustomText>
@@ -61,7 +62,7 @@ const RiderAuth = () => {
           fontFamily="Regular"
           style={[
             commonStyles.lightText,
-            { textAlign: "center", marginHorizontal: 20 },
+            { textAlign: "center", marginHorizontal: scaleHorizontal(20) },
           ]}
         >
           By continuing you agree to our Terms of Service and Privacy Policy.

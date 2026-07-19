@@ -11,7 +11,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import CustomText from "@/components/shared/CustomText";
 import { useTheme } from "@/theme/ThemeProvider";
 import { THEME_META, THEMES, ThemeId } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { Ionicons } from "@expo/vector-icons";
 
 /** Preferred display order; any new THEMES keys are appended automatically */
@@ -55,7 +60,7 @@ const ThemePicker: FC<ThemePickerProps> = ({ visible, onClose }) => {
             styles.sheet,
             {
               backgroundColor: colors.surface,
-              paddingBottom: Math.max(insets.bottom, 16),
+              paddingBottom: Math.max(insets.bottom, scaleVertical(16)),
             },
           ]}
           onPress={(e) => e.stopPropagation()}
@@ -67,13 +72,13 @@ const ThemePicker: FC<ThemePickerProps> = ({ visible, onClose }) => {
           </View>
           <CustomText
             fontFamily="Bold"
-            style={{ fontSize: RFValue(15), color: colors.text, marginBottom: 4 }}
+            style={{ fontSize: RFValue(15), color: colors.text, marginBottom: scaleVertical(4) }}
           >
             App Theme
           </CustomText>
           <CustomText
             fontSize={11}
-            style={{ color: colors.muted, marginBottom: 14 }}
+            style={{ color: colors.muted, marginBottom: scaleVertical(14) }}
           >
             Pick a look — saved on this device
           </CustomText>
@@ -122,13 +127,13 @@ const ThemePicker: FC<ThemePickerProps> = ({ visible, onClose }) => {
                   {selected ? (
                     <Ionicons
                       name="checkmark-circle"
-                      size={22}
+                      size={RFValue(22)}
                       color={colors.primary}
                     />
                   ) : (
                     <Ionicons
                       name="ellipse-outline"
-                      size={22}
+                      size={RFValue(22)}
                       color={colors.border}
                     />
                   )}
@@ -151,28 +156,32 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   sheet: {
-    borderTopLeftRadius: 22,
-    borderTopRightRadius: 22,
-    paddingHorizontal: 18,
-    paddingTop: 8,
+    borderTopLeftRadius: scaleModerate(22),
+    borderTopRightRadius: scaleModerate(22),
+    paddingHorizontal: scaleHorizontal(18),
+    paddingTop: scaleVertical(8),
     maxHeight: "70%",
   },
-  handleWrap: { alignItems: "center", marginBottom: 10 },
-  handle: { width: 40, height: 4, borderRadius: 2 },
+  handleWrap: { alignItems: "center", marginBottom: scaleVertical(10) },
+  handle: {
+    width: scaleHorizontal(40),
+    height: scaleVertical(4),
+    borderRadius: scaleModerate(2),
+  },
   row: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
-    padding: 12,
-    borderRadius: 14,
+    gap: scaleHorizontal(12),
+    padding: scaleModerate(12),
+    borderRadius: scaleModerate(14),
     borderWidth: 1.5,
-    marginBottom: 10,
+    marginBottom: scaleVertical(10),
   },
-  swatches: { flexDirection: "row", gap: 4 },
+  swatches: { flexDirection: "row", gap: scaleHorizontal(4) },
   swatch: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
+    width: scaleModerate(16),
+    height: scaleModerate(16),
+    borderRadius: scaleModerate(8),
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: "rgba(255,255,255,0.25)",
   },

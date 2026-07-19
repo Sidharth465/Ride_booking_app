@@ -10,7 +10,12 @@ import CustomText from "../shared/CustomText";
 import CustomButton from "../shared/CustomButton";
 import AnimatedBottomSheet from "../shared/AnimatedBottomSheet";
 import { Colors } from "@/utils/Constants";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { PaymentMethod } from "@/service/rideService";
 
 type PaymentSheetProps = {
@@ -61,7 +66,7 @@ const PaymentSheet: FC<PaymentSheetProps> = ({
       </CustomText>
       <CustomText
         fontSize={12}
-        style={{ color: Colors.muted, marginBottom: 16 }}
+        style={{ color: Colors.muted, marginBottom: scaleVertical(16) }}
       >
         {paid
           ? rated
@@ -82,24 +87,24 @@ const PaymentSheet: FC<PaymentSheetProps> = ({
               onPress={() => setSelected(m.id)}
               activeOpacity={0.8}
             >
-              <Ionicons name={m.icon} size={22} color={Colors.primary} />
+              <Ionicons name={m.icon} size={RFValue(22)} color={Colors.primary} />
               <CustomText
                 fontFamily="Medium"
-                style={{ flex: 1, marginLeft: 12 }}
+                style={{ flex: 1, marginLeft: scaleHorizontal(12) }}
               >
                 {m.label}
               </CustomText>
               {selected === m.id ? (
                 <Ionicons
                   name="checkmark-circle"
-                  size={22}
+                  size={RFValue(22)}
                   color={Colors.tertiary}
                 />
               ) : null}
             </TouchableOpacity>
           ))}
 
-          <View style={{ height: 12 }} />
+          <View style={{ height: scaleVertical(12) }} />
           {paying ? (
             <ActivityIndicator color={Colors.primary} />
           ) : (
@@ -123,7 +128,7 @@ const PaymentSheet: FC<PaymentSheetProps> = ({
               >
                 <Ionicons
                   name={n <= rating ? "star" : "star-outline"}
-                  size={36}
+                  size={RFValue(36)}
                   color={n <= rating ? Colors.primary : Colors.border}
                 />
               </TouchableOpacity>
@@ -139,7 +144,7 @@ const PaymentSheet: FC<PaymentSheetProps> = ({
       )}
 
       {paid && rated && (
-        <View style={{ marginBottom: 8 }}>
+        <View style={{ marginBottom: scaleVertical(8) }}>
           <CustomButton title="Done" onPress={onDone} />
         </View>
       )}
@@ -152,18 +157,18 @@ export default PaymentSheet;
 const styles = StyleSheet.create({
   title: {
     fontSize: RFValue(16),
-    marginBottom: 4,
+    marginBottom: scaleVertical(4),
     color: Colors.text,
   },
   methodRow: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 14,
-    paddingHorizontal: 12,
+    paddingVertical: scaleVertical(14),
+    paddingHorizontal: scaleHorizontal(12),
     borderWidth: 1,
     borderColor: Colors.border,
-    borderRadius: 14,
-    marginBottom: 8,
+    borderRadius: scaleModerate(14),
+    marginBottom: scaleVertical(8),
     backgroundColor: Colors.secondary_light,
   },
   methodSelected: {
@@ -173,8 +178,8 @@ const styles = StyleSheet.create({
   stars: {
     flexDirection: "row",
     justifyContent: "center",
-    gap: 8,
-    marginBottom: 20,
-    marginTop: 8,
+    gap: scaleHorizontal(8),
+    marginBottom: scaleVertical(20),
+    marginTop: scaleVertical(8),
   },
 });

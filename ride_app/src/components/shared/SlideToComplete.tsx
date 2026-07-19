@@ -13,9 +13,17 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import CustomText from "@/components/shared/CustomText";
 import { useColors } from "@/theme/ThemeProvider";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
-const THUMB = 52;
+const THUMB = scaleModerate(52);
+const THUMB_GAP = scaleHorizontal(8);
+const THUMB_LEFT = scaleHorizontal(4);
+const TRACK_VPAD = scaleModerate(8);
 const THRESHOLD = 0.85;
 
 type SlideToCompleteProps = {
@@ -57,13 +65,13 @@ const SlideToComplete: FC<SlideToCompleteProps> = ({
     .onUpdate((e) => {
       "worklet";
       if (done.value || trackW.value <= 0) return;
-      const max = Math.max(0, trackW.value - THUMB - 8);
+      const max = Math.max(0, trackW.value - THUMB - THUMB_GAP);
       tx.value = Math.min(Math.max(0, e.translationX), max);
     })
     .onEnd(() => {
       "worklet";
       if (done.value || trackW.value <= 0) return;
-      const max = Math.max(0, trackW.value - THUMB - 8);
+      const max = Math.max(0, trackW.value - THUMB - THUMB_GAP);
       if (tx.value >= max * THRESHOLD) {
         done.value = true;
         tx.value = withSpring(max, { damping: 16, stiffness: 200 });
@@ -86,7 +94,7 @@ const SlideToComplete: FC<SlideToCompleteProps> = ({
   }));
 
   const labelStyle = useAnimatedStyle(() => {
-    const max = Math.max(1, trackW.value - THUMB - 8);
+    const max = Math.max(1, trackW.value - THUMB - THUMB_GAP);
     const opacity = interpolate(
       tx.value,
       [0, max * 0.55],
@@ -138,7 +146,7 @@ const SlideToComplete: FC<SlideToCompleteProps> = ({
           ) : (
             <Ionicons
               name="chevron-forward"
-              size={26}
+              size={RFValue(26)}
               color={colors.onPrimary}
             />
           )}
@@ -153,8 +161,8 @@ export default SlideToComplete;
 const styles = StyleSheet.create({
   track: {
     width: "100%",
-    height: THUMB + 8,
-    borderRadius: (THUMB + 8) / 2,
+    height: THUMB + TRACK_VPAD,
+    borderRadius: (THUMB + TRACK_VPAD) / 2,
     borderWidth: 1.5,
     justifyContent: "center",
     overflow: "hidden",
@@ -164,18 +172,18 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     bottom: 0,
-    borderRadius: (THUMB + 8) / 2,
+    borderRadius: (THUMB + TRACK_VPAD) / 2,
     opacity: 0.22,
   },
   labelWrap: {
     ...StyleSheet.absoluteFillObject,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: THUMB + 12,
+    paddingHorizontal: THUMB + scaleHorizontal(12),
   },
   thumb: {
     position: "absolute",
-    left: 4,
+    left: THUMB_LEFT,
     width: THUMB,
     height: THUMB,
     borderRadius: THUMB / 2,

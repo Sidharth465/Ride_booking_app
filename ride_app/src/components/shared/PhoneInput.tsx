@@ -1,6 +1,11 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import React from "react";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import CustomText from "./CustomText";
 import { useThemedStyles } from "@/theme/useThemedStyles";
 import { useColors } from "@/theme/ThemeProvider";
@@ -22,18 +27,18 @@ const PhoneInput = ({
     container: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 4,
-      marginVertical: 15,
+      gap: scaleHorizontal(4),
+      marginVertical: scaleVertical(15),
       borderWidth: 1.5,
       borderColor: c.border,
-      borderRadius: 12,
-      paddingHorizontal: 12,
+      borderRadius: scaleModerate(12),
+      paddingHorizontal: scaleHorizontal(12),
       backgroundColor: c.surface,
     },
     input: {
       fontSize: RFValue(13),
       fontFamily: "Medium",
-      height: 48,
+      height: scaleVertical(48),
       width: "90%" as const,
       color: c.text,
     },

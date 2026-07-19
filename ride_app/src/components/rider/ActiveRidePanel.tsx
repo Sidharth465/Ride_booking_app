@@ -24,7 +24,12 @@ import { withAlpha, AppColors, MapColors } from "@/utils/Constants";
 import { useColors } from "@/theme/ThemeProvider";
 import { useThemedStyles } from "@/theme/useThemedStyles";
 import { openGoogleMapsTo } from "@/utils/openMaps";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 
 export const RIDER_SHEET_MINI_RATIO = 0.34;
 export const RIDER_SHEET_EXPANDED_RATIO = 0.58;
@@ -94,7 +99,8 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
   const [otp, setOtp] = useState("");
 
   const bottomPad =
-    Math.max(insets.bottom, 14) + (Platform.OS === "ios" ? 4 : 8);
+    Math.max(insets.bottom, scaleVertical(14)) +
+    (Platform.OS === "ios" ? scaleVertical(4) : scaleVertical(8));
   const miniHeight = Math.round(windowHeight * RIDER_SHEET_MINI_RATIO);
   const expandedHeight = Math.round(windowHeight * RIDER_SHEET_EXPANDED_RATIO);
 
@@ -148,40 +154,40 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
 
   const styles = useThemedStyles((c: AppColors) => ({
     content: {
-      paddingHorizontal: 18,
-      paddingTop: 4,
+      paddingHorizontal: scaleHorizontal(18),
+      paddingTop: scaleVertical(4),
       paddingBottom: bottomPad,
     },
     topRow: {
       flexDirection: "row" as const,
       justifyContent: "space-between" as const,
       alignItems: "flex-start" as const,
-      marginBottom: 10,
+      marginBottom: scaleVertical(10),
     },
-    titleBlock: { flex: 1, paddingRight: 12 },
+    titleBlock: { flex: 1, paddingRight: scaleHorizontal(12) },
     title: { fontSize: RFValue(16), color: c.text },
-    subtitle: { color: c.primary, marginTop: 3 },
+    subtitle: { color: c.primary, marginTop: scaleVertical(3) },
     farePill: {
       backgroundColor: withAlpha(c.primary, 0.12),
-      paddingHorizontal: 12,
-      paddingVertical: 8,
-      borderRadius: 12,
+      paddingHorizontal: scaleHorizontal(12),
+      paddingVertical: scaleVertical(8),
+      borderRadius: scaleModerate(12),
       alignItems: "flex-end" as const,
     },
     fare: { fontSize: RFValue(15), color: c.primary },
     chipRow: {
       flexDirection: "row" as const,
       flexWrap: "wrap" as const,
-      gap: 8,
-      marginBottom: 12,
+      gap: scaleHorizontal(8),
+      marginBottom: scaleVertical(12),
     },
     chip: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 6,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      borderRadius: 10,
+      gap: scaleHorizontal(6),
+      paddingHorizontal: scaleHorizontal(10),
+      paddingVertical: scaleVertical(8),
+      borderRadius: scaleModerate(10),
       backgroundColor: withAlpha(MapColors.path, 0.12),
     },
     chipText: { fontSize: RFValue(11), color: MapColors.path },
@@ -189,11 +195,11 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
       flexDirection: "row" as const,
       alignItems: "center" as const,
       justifyContent: "center" as const,
-      gap: 8,
+      gap: scaleHorizontal(8),
       backgroundColor: MapColors.path,
-      borderRadius: 14,
-      paddingVertical: 14,
-      marginBottom: 12,
+      borderRadius: scaleModerate(14),
+      paddingVertical: scaleVertical(14),
+      marginBottom: scaleVertical(12),
     },
     navigateText: {
       color: "#FFFFFF",
@@ -201,52 +207,52 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
     },
     routeCard: {
       backgroundColor: c.secondary_light,
-      borderRadius: 14,
-      padding: 14,
-      marginBottom: 12,
+      borderRadius: scaleModerate(14),
+      padding: scaleModerate(14),
+      marginBottom: scaleVertical(12),
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: c.border,
     },
     routeRow: {
       flexDirection: "row" as const,
       alignItems: "flex-start" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
     },
-    routeLabel: { color: c.muted, marginBottom: 2, letterSpacing: 0.4 },
+    routeLabel: { color: c.muted, marginBottom: scaleVertical(2), letterSpacing: 0.4 },
     pickupDot: {
-      width: 10,
-      height: 10,
-      borderRadius: 5,
+      width: scaleModerate(10),
+      height: scaleModerate(10),
+      borderRadius: scaleModerate(5),
       backgroundColor: MapColors.pickup,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
     dropDot: {
-      width: 10,
-      height: 10,
-      borderRadius: 5,
+      width: scaleModerate(10),
+      height: scaleModerate(10),
+      borderRadius: scaleModerate(5),
       backgroundColor: MapColors.drop,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
     routeLine: {
-      width: 2,
-      height: 14,
+      width: scaleHorizontal(2),
+      height: scaleVertical(14),
       backgroundColor: c.border,
-      marginLeft: 4,
-      marginVertical: 4,
+      marginLeft: scaleHorizontal(4),
+      marginVertical: scaleVertical(4),
     },
     actions: {
-      marginTop: 4,
+      marginTop: scaleVertical(4),
       alignItems: "center" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
       width: "100%" as const,
     },
     otpBlock: {
       width: "100%" as const,
       alignItems: "center" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
       backgroundColor: withAlpha(c.primary, 0.08),
-      borderRadius: 16,
-      padding: 14,
+      borderRadius: scaleModerate(16),
+      padding: scaleModerate(14),
       borderWidth: 1.5,
       borderColor: withAlpha(c.primary, 0.3),
     },
@@ -256,15 +262,16 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
       borderWidth: 1.5,
       borderColor: c.primary,
       backgroundColor: c.surface,
-      borderRadius: 14,
-      paddingVertical: Platform.OS === "ios" ? 14 : 10,
+      borderRadius: scaleModerate(14),
+      paddingVertical:
+        Platform.OS === "ios" ? scaleVertical(14) : scaleVertical(10),
       fontSize: RFValue(24),
       fontFamily: "Bold",
       letterSpacing: 12,
       color: c.text,
       textAlign: "center" as const,
     },
-    cancelLink: { marginTop: 2, paddingVertical: 10 },
+    cancelLink: { marginTop: scaleVertical(2), paddingVertical: scaleVertical(10) },
   }));
 
   return (
@@ -282,13 +289,13 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
       onChange={reportSnap}
       handleIndicatorStyle={{
         backgroundColor: colors.border,
-        width: 40,
-        height: 4,
+        width: scaleHorizontal(40),
+        height: scaleVertical(4),
       }}
       backgroundStyle={{
         backgroundColor: colors.surface,
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
+        borderTopLeftRadius: scaleModerate(24),
+        borderTopRightRadius: scaleModerate(24),
         shadowColor: colors.text,
         shadowOpacity: 0.18,
         shadowRadius: 14,
@@ -325,7 +332,7 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
         <View style={styles.chipRow}>
           {etaLabel ? (
             <View style={styles.chip}>
-              <Ionicons name="time-outline" size={14} color={MapColors.path} />
+              <Ionicons name="time-outline" size={RFValue(14)} color={MapColors.path} />
               <CustomText fontFamily="Medium" style={styles.chipText}>
                 ~{etaLabel}
                 {routeKm != null ? ` · ${routeKm.toFixed(1)} km` : ""}
@@ -334,7 +341,7 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
           ) : null}
           {ride.status === "START" && distLabel ? (
             <View style={styles.chip}>
-              <Ionicons name="navigate-outline" size={14} color={MapColors.path} />
+              <Ionicons name="navigate-outline" size={RFValue(14)} color={MapColors.path} />
               <CustomText fontFamily="Medium" style={styles.chipText}>
                 {distLabel}
               </CustomText>
@@ -349,7 +356,7 @@ const ActiveRidePanel: FC<ActiveRidePanelProps> = ({
             onPress={openNavigate}
             activeOpacity={0.88}
           >
-            <Ionicons name="navigate" size={20} color="#FFFFFF" />
+            <Ionicons name="navigate" size={RFValue(20)} color="#FFFFFF" />
             <CustomText fontFamily="Bold" style={styles.navigateText}>
               {navigateTarget === "drop"
                 ? "Navigate to drop"

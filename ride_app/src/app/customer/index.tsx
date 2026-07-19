@@ -10,7 +10,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { AppColors, THEME_META } from "@/utils/Constants";
 import { useColors, useTheme } from "@/theme/ThemeProvider";
 import { useThemedStyles } from "@/theme/useThemedStyles";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { useUserStore } from "@/store/userStore";
 import { hasBlockingActiveRide } from "@/utils/rideActive";
 
@@ -33,11 +38,12 @@ const CustomerHome = () => {
     mapArea: { flex: 1 },
     sheet: {
       backgroundColor: c.surface,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-      paddingHorizontal: 20,
-      paddingTop: 18,
-      paddingBottom: Platform.OS === "ios" ? 36 : 24,
+      borderTopLeftRadius: scaleModerate(20),
+      borderTopRightRadius: scaleModerate(20),
+      paddingHorizontal: scaleHorizontal(20),
+      paddingTop: scaleVertical(18),
+      paddingBottom:
+        Platform.OS === "ios" ? scaleVertical(36) : scaleVertical(24),
       shadowColor: c.text,
       shadowOpacity: 0.12,
       shadowRadius: 10,
@@ -47,21 +53,21 @@ const CustomerHome = () => {
       flexDirection: "row" as const,
       alignItems: "center" as const,
       justifyContent: "space-between" as const,
-      marginBottom: 12,
+      marginBottom: scaleVertical(12),
     },
     greeting: {
       fontSize: RFValue(14),
       color: c.text,
       flex: 1,
-      paddingRight: 8,
+      paddingRight: scaleHorizontal(8),
     },
     themeBtn: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 6,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      borderRadius: 10,
+      gap: scaleHorizontal(6),
+      paddingHorizontal: scaleHorizontal(10),
+      paddingVertical: scaleVertical(8),
+      borderRadius: scaleModerate(10),
       backgroundColor: c.secondary_light,
       borderWidth: 1,
       borderColor: c.border,
@@ -69,13 +75,13 @@ const CustomerHome = () => {
     whereTo: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
       alignSelf: "stretch" as const,
       width: "100%" as const,
       backgroundColor: c.secondary_light,
-      borderRadius: 12,
-      paddingHorizontal: 14,
-      paddingVertical: 14,
+      borderRadius: scaleModerate(12),
+      paddingHorizontal: scaleHorizontal(14),
+      paddingVertical: scaleVertical(14),
     },
     whereToDisabled: {
       opacity: 0.75,
@@ -90,12 +96,12 @@ const CustomerHome = () => {
     activeRideBanner: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
       backgroundColor: c.primary,
-      borderRadius: 12,
-      paddingHorizontal: 14,
-      paddingVertical: 12,
-      marginBottom: 14,
+      borderRadius: scaleModerate(12),
+      paddingHorizontal: scaleHorizontal(14),
+      paddingVertical: scaleVertical(12),
+      marginBottom: scaleVertical(14),
     },
   }));
 

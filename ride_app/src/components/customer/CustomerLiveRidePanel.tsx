@@ -21,7 +21,12 @@ import { CustomerActiveRide } from "@/store/userStore";
 import { withAlpha, AppColors, MapColors } from "@/utils/Constants";
 import { useColors } from "@/theme/ThemeProvider";
 import { useThemedStyles } from "@/theme/useThemedStyles";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { VEHICLE_LABELS, VehicleType } from "@/types/ride";
 
 type CustomerLiveRidePanelProps = {
@@ -99,7 +104,8 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
     typeof ride.rider === "object" ? ride.rider?.phone : null;
 
   const bottomPad =
-    Math.max(insets.bottom, 14) + (Platform.OS === "ios" ? 4 : 8);
+    Math.max(insets.bottom, scaleVertical(14)) +
+    (Platform.OS === "ios" ? scaleVertical(4) : scaleVertical(8));
   // Mini still tall enough for status + fare + ETA + contacts peek
   const miniHeight = Math.round(windowHeight * LIVE_SHEET_MINI_RATIO);
   const expandedHeight = Math.round(windowHeight * LIVE_SHEET_EXPANDED_RATIO);
@@ -124,96 +130,96 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
 
   const styles = useThemedStyles((c: AppColors) => ({
     content: {
-      paddingHorizontal: 18,
-      paddingTop: 4,
+      paddingHorizontal: scaleHorizontal(18),
+      paddingTop: scaleVertical(4),
       paddingBottom: bottomPad,
     },
     topRow: {
       flexDirection: "row" as const,
       justifyContent: "space-between" as const,
       alignItems: "flex-start" as const,
-      marginBottom: 10,
+      marginBottom: scaleVertical(10),
     },
-    titleBlock: { flex: 1, paddingRight: 12 },
+    titleBlock: { flex: 1, paddingRight: scaleHorizontal(12) },
     title: { fontSize: RFValue(15), color: c.text },
-    subtitle: { color: c.primary, marginTop: 2 },
+    subtitle: { color: c.primary, marginTop: scaleVertical(2) },
     farePill: {
       backgroundColor: withAlpha(c.primary, 0.12),
-      paddingHorizontal: 12,
-      paddingVertical: 8,
-      borderRadius: 12,
+      paddingHorizontal: scaleHorizontal(12),
+      paddingVertical: scaleVertical(8),
+      borderRadius: scaleModerate(12),
       alignItems: "flex-end" as const,
     },
     fare: { fontSize: RFValue(15), color: c.primary },
-    vehicleMeta: { color: c.muted, marginTop: 2 },
+    vehicleMeta: { color: c.muted, marginTop: scaleVertical(2) },
     metaRow: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      marginBottom: 10,
+      marginBottom: scaleVertical(10),
     },
     liveChip: {
       alignSelf: "flex-start" as const,
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      paddingHorizontal: 10,
-      paddingVertical: 7,
-      borderRadius: 10,
-      marginBottom: 10,
+      paddingHorizontal: scaleHorizontal(10),
+      paddingVertical: scaleVertical(7),
+      borderRadius: scaleModerate(10),
+      marginBottom: scaleVertical(10),
       backgroundColor: withAlpha(MapColors.pickup, 0.12),
     },
     etaRow: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 6,
-      marginBottom: 10,
+      gap: scaleHorizontal(6),
+      marginBottom: scaleVertical(10),
       backgroundColor: withAlpha(MapColors.path, 0.12),
-      paddingHorizontal: 12,
-      paddingVertical: 10,
-      borderRadius: 12,
+      paddingHorizontal: scaleHorizontal(12),
+      paddingVertical: scaleVertical(10),
+      borderRadius: scaleModerate(12),
     },
     etaText: { fontSize: RFValue(12), color: MapColors.path },
     routeCard: {
       backgroundColor: c.secondary_light,
-      borderRadius: 14,
-      padding: 14,
-      marginBottom: 4,
+      borderRadius: scaleModerate(14),
+      padding: scaleModerate(14),
+      marginBottom: scaleVertical(4),
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: c.border,
     },
     routeRow: {
       flexDirection: "row" as const,
       alignItems: "flex-start" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
     },
-    routeLabel: { color: c.muted, marginBottom: 2, letterSpacing: 0.4 },
+    routeLabel: { color: c.muted, marginBottom: scaleVertical(2), letterSpacing: 0.4 },
     pickupDot: {
-      width: 10,
-      height: 10,
-      borderRadius: 5,
+      width: scaleModerate(10),
+      height: scaleModerate(10),
+      borderRadius: scaleModerate(5),
       backgroundColor: MapColors.pickup,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
     dropDot: {
-      width: 10,
-      height: 10,
-      borderRadius: 5,
+      width: scaleModerate(10),
+      height: scaleModerate(10),
+      borderRadius: scaleModerate(5),
       backgroundColor: MapColors.drop,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
     routeLine: {
-      width: 2,
-      height: 14,
+      width: scaleHorizontal(2),
+      height: scaleVertical(14),
       backgroundColor: c.border,
-      marginLeft: 4,
-      marginVertical: 4,
+      marginLeft: scaleHorizontal(4),
+      marginVertical: scaleVertical(4),
     },
     otpBox: {
       backgroundColor: withAlpha(c.primary, 0.1),
-      borderRadius: 14,
-      padding: 14,
+      borderRadius: scaleModerate(14),
+      padding: scaleModerate(14),
       alignItems: "center" as const,
-      marginTop: 12,
-      marginBottom: 4,
+      marginTop: scaleVertical(12),
+      marginBottom: scaleVertical(4),
       borderWidth: 1.5,
       borderColor: withAlpha(c.primary, 0.35),
     },
@@ -221,21 +227,21 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
       fontSize: RFValue(28),
       color: c.primary,
       letterSpacing: 8,
-      marginTop: 4,
+      marginTop: scaleVertical(4),
     },
     actions: {
-      marginTop: 14,
+      marginTop: scaleVertical(14),
       alignItems: "center" as const,
-      gap: 10,
+      gap: scaleHorizontal(10),
       width: "100%" as const,
-      paddingBottom: 8,
+      paddingBottom: scaleVertical(8),
     },
-    cancelLink: { marginTop: 4, paddingVertical: 10 },
+    cancelLink: { marginTop: scaleVertical(4), paddingVertical: scaleVertical(10) },
     searchingRow: {
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 8,
-      marginBottom: 4,
+      gap: scaleHorizontal(8),
+      marginBottom: scaleVertical(4),
     },
   }));
 
@@ -250,13 +256,13 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
       onChange={reportSnap}
       handleIndicatorStyle={{
         backgroundColor: colors.border,
-        width: 40,
-        height: 4,
+        width: scaleHorizontal(40),
+        height: scaleVertical(4),
       }}
       backgroundStyle={{
         backgroundColor: colors.surface,
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
+        borderTopLeftRadius: scaleModerate(24),
+        borderTopRightRadius: scaleModerate(24),
         shadowColor: colors.text,
         shadowOpacity: 0.18,
         shadowRadius: 14,
@@ -301,7 +307,7 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
 
         {etaLabel && !searching ? (
           <View style={styles.etaRow}>
-            <Ionicons name="time-outline" size={16} color={MapColors.path} />
+            <Ionicons name="time-outline" size={RFValue(16)} color={MapColors.path} />
             <CustomText fontFamily="Bold" style={styles.etaText}>
               {ride.status === "START"
                 ? `Drop in ~${etaLabel}`
@@ -317,10 +323,10 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
 
         {riderPhone ? (
           <View style={styles.metaRow}>
-            <Ionicons name="call-outline" size={14} color={colors.muted} />
+            <Ionicons name="call-outline" size={RFValue(14)} color={colors.muted} />
             <CustomText
               fontSize={11}
-              style={{ color: colors.muted, marginLeft: 6 }}
+              style={{ color: colors.muted, marginLeft: scaleHorizontal(6) }}
             >
               Rider · {riderPhone}
             </CustomText>
@@ -346,13 +352,13 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
           <View style={styles.liveChip}>
             <Ionicons
               name="navigate-circle"
-              size={14}
+              size={RFValue(14)}
               color={MapColors.pickup}
             />
             <CustomText
               fontSize={11}
               fontFamily="Medium"
-              style={{ marginLeft: 6, color: MapColors.pickup }}
+              style={{ marginLeft: scaleHorizontal(6), color: MapColors.pickup }}
             >
               Live tracking — rider on map
             </CustomText>
@@ -365,7 +371,7 @@ const CustomerLiveRidePanel: FC<CustomerLiveRidePanelProps> = ({
         ride.status !== "SEARCHING_FOR_RIDER" ? (
           <CustomText
             fontSize={10}
-            style={{ color: colors.muted, marginBottom: 10 }}
+            style={{ color: colors.muted, marginBottom: scaleVertical(10) }}
           >
             Waiting for rider live location…
           </CustomText>

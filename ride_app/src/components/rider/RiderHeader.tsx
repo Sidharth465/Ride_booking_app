@@ -9,7 +9,12 @@ import { logout } from "@/service/authService";
 import { useWS } from "@/service/WSProvider";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Ionicons } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
+import {
+  RFValue,
+  scaleHorizontal,
+  scaleModerate,
+  scaleVertical,
+} from "@/utils/responsive";
 import { useColors } from "@/theme/ThemeProvider";
 import { useThemedStyles } from "@/theme/useThemedStyles";
 import { AppColors } from "@/utils/Constants";
@@ -33,21 +38,21 @@ const RiderHeader: FC<RiderHeaderProps> = ({
       flexDirection: "row" as const,
       alignItems: "center" as const,
       justifyContent: "space-between" as const,
-      gap: 10,
-      paddingBottom: 6,
+      gap: scaleHorizontal(10),
+      paddingBottom: scaleVertical(6),
     },
     leftActions: {
       flexDirection: "row" as const,
-      gap: 6,
+      gap: scaleHorizontal(6),
     },
     logoutBtn: {
       backgroundColor: c.surface,
-      borderRadius: 100,
-      paddingHorizontal: 10,
-      paddingVertical: 6,
+      borderRadius: scaleModerate(100),
+      paddingHorizontal: scaleHorizontal(10),
+      paddingVertical: scaleVertical(6),
       flexDirection: "row" as const,
       alignItems: "center" as const,
-      gap: 4,
+      gap: scaleHorizontal(4),
     },
     titleBlock: {
       flex: 1,
@@ -58,7 +63,7 @@ const RiderHeader: FC<RiderHeaderProps> = ({
     },
     subtitle: {
       color: c.muted,
-      marginTop: 2,
+      marginTop: scaleVertical(2),
     },
   }));
 

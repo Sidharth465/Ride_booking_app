@@ -8,6 +8,7 @@ import { MapColors } from "@/utils/Constants";
 import { calculateDistance, getPoints } from "@/utils/mapUtils";
 import MovingVehicleMarker from "@/components/shared/MovingVehicleMarker";
 import { mapStyles } from "@/styles/mapStyles";
+import { scaleHorizontal, scaleVertical } from "@/utils/responsive";
 
 const GOOGLE_MAPS_KEY = process.env.EXPO_PUBLIC_MAP_API_KEY ?? "";
 const MIN_ROUTE_KM = 0.05;
@@ -108,10 +109,10 @@ const RiderMap: FC<RiderMapProps> = ({
 
   const edgePadding = useMemo(
     () => ({
-      top: 100,
-      right: 50,
-      bottom: Math.max(40, Math.round(bottomPadding * 0.15)),
-      left: 50,
+      top: scaleVertical(100),
+      right: scaleHorizontal(50),
+      bottom: Math.max(scaleVertical(40), Math.round(bottomPadding * 0.15)),
+      left: scaleHorizontal(50),
     }),
     [bottomPadding]
   );
