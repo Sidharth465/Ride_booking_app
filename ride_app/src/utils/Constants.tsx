@@ -6,12 +6,9 @@ export const screenWidth = WINDOW_WIDTH;
 export type ThemeId =
   | "ink_coral"
   | "forest_lime"
-  | "midnight_sky"
   | "sand_indigo"
   | "slate_amber"
-  | "graphite_teal"
-  | "light"
-  | "dark";
+  | "graphite_teal";
 
 export type AppColors = {
   primary: string;
@@ -43,7 +40,7 @@ export const THEME_META: Record<
     blurb: "Fresh mobility with energetic lime accents",
     swatches: ["#164A41", "#B7F700", "#F5F8F4"],
   },
-  
+
   sand_indigo: {
     label: "Sand + Indigo",
     blurb: "Warm travel experience with elegant indigo",
@@ -58,7 +55,7 @@ export const THEME_META: Record<
     label: "Graphite + Teal",
     blurb: "Sophisticated graphite with vibrant teal",
     swatches: ["#202124", "#14B8A6", "#F8FAFC"],
-  }
+  },
 };
 
 export const THEMES: Record<ThemeId, AppColors> = {
@@ -92,7 +89,7 @@ export const THEMES: Record<ThemeId, AppColors> = {
     danger: "#F87171",
     onPrimary: "#0F1A14",
   },
-  
+
   sand_indigo: {
     primary: "#4F46E5",
     background: "#F5F0E8",
@@ -108,7 +105,7 @@ export const THEMES: Record<ThemeId, AppColors> = {
     danger: "#DC2626",
     onPrimary: "#FFFFFF",
   },
- 
+
   slate_amber: {
     primary: "#F59E0B",
     background: "#F8FAFC",
@@ -124,7 +121,7 @@ export const THEMES: Record<ThemeId, AppColors> = {
     danger: "#DC2626",
     onPrimary: "#FFFFFF",
   },
-  
+
   graphite_teal: {
     primary: "#14B8A6",
     background: "#F9FAFB",
@@ -139,10 +136,10 @@ export const THEMES: Record<ThemeId, AppColors> = {
     border: "#D1D5DB",
     danger: "#DC2626",
     onPrimary: "#FFFFFF",
-  }
+  },
 };
 
-export const DEFAULT_THEME: ThemeId = "midnight_sky";
+export const DEFAULT_THEME: ThemeId = "ink_coral";
 
 /** Fixed map colors — never follow app theme */
 export const MapColors = {
@@ -152,7 +149,6 @@ export const MapColors = {
   rider: "#007AFF",
   offline: "#888888",
 } as const;
-
 
 export const Colors: AppColors = { ...THEMES[DEFAULT_THEME] };
 

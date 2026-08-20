@@ -30,23 +30,23 @@ const PhoneInput = ({
       gap: scaleHorizontal(4),
       marginVertical: scaleVertical(15),
       borderWidth: 1.5,
-      borderColor: c.border,
+      borderColor: c?.border,
       borderRadius: scaleModerate(12),
       paddingHorizontal: scaleHorizontal(12),
-      backgroundColor: c.surface,
+      backgroundColor: c?.surface,
     },
     input: {
       fontSize: RFValue(13),
       fontFamily: "Medium",
       height: scaleVertical(48),
       width: "90%" as const,
-      color: c.text,
+      color: c?.text,
     },
     text: {
       fontSize: RFValue(13),
       top: -1,
       fontFamily: "Medium",
-      color: c.text,
+      color: c?.text,
     },
   }));
 

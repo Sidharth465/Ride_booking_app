@@ -32,7 +32,7 @@ const CustomText: FC<CustomTextProps> = ({
         {
           fontSize: fontSize ?? fontSizes[variant],
           fontFamily,
-          color: colors.text,
+          color: colors?.text,
         },
         style,
       ]}
